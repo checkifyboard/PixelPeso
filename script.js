@@ -1,8 +1,17 @@
+window.addEventListener("DOMContentLoaded", () => {
+  const blocks = document.querySelectorAll(".block img");
+  const counterElement = document.getElementById("ad-counter");
 
-// Optional: Show block number on hover in console
-document.querySelectorAll('.block').forEach(block => {
-  block.addEventListener('mouseenter', () => {
-    const id = block.getAttribute('id');
-    console.log(`Hovering on: ${id}`);
+  const totalBlocks = blocks.length;
+  let occupied = 0;
+
+  blocks.forEach(img => {
+    if (!img.src.includes("blank.png")) {
+      occupied++;
+    }
   });
+
+  if (counterElement) {
+    counterElement.textContent = `${occupied} / ${totalBlocks} ads occupied`;
+  }
 });
